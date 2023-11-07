@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Titulo from "../Titulo";
-import Populares from "./Populares";
+import Populares from "./Populares"
 import Tags from "./Tags";
 import Imagem from "./Imagem";
 
