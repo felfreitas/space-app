@@ -26,7 +26,7 @@ const BotaoEstilizado = styled.button`
     cursor:pointer;
 
     border: 2px solid transparent;
-
+    padding:5px;
     box-sizing:border-box;
     transition: background-color 0.3s ease;
     &:hover{
