@@ -99,7 +99,7 @@ const BotaoIcone = styled.button`
 //     justify-content: space-between;
 //     align-items: center;
 // `
-const Imagem = ({ foto, expandida = false }) => {
+const Imagem = ({ foto, expandida = false, aoZoomSolicitado }) => {
 
     return (
         <>
@@ -114,14 +114,18 @@ const Imagem = ({ foto, expandida = false }) => {
                         <FonteFoto>{foto.fonte}</FonteFoto>
                         <BotoesAgrupados>
                             <BotaoIcone> <img src="/icones/favorito.png" alt="Icone de favorito" /></BotaoIcone>
-                            {!expandida && <BotaoIcone aria-hidden={expandida}>
-                            <img src="/icones/expandir.png" alt="Icone de expandir" />
-                        </BotaoIcone>}
+                            {!expandida &&
+                                <BotaoIcone
+                                    aria-hidden={expandida}
+                                    onClick={() => aoZoomSolicitado(foto)}
+                                >
+                                    <img src="/icones/expandir.png" alt="Icone de expandir" />
+                                </BotaoIcone>}
                         </BotoesAgrupados>
                     </FooterEstilizado>
                 </CaptionEstilizada>
             </FigureEstilizada>
-           
+
 
             {/* <Figure $expandida={expandida} id={`foto-${foto.id}`}>
                 <img src={foto.path} alt={foto.alt} />
