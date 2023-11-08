@@ -36,7 +36,7 @@ const BotaoEstilizado = styled.button`
     border: none;
     cursor: pointer;
 `
-const ModalZoom = ({ foto, aoFechar }) => {
+const ModalZoom = ({ foto, aoFechar, aoAlternarFavorito }) => {
 
     const [show, setShow] = useState(false);
 
@@ -54,6 +54,7 @@ const ModalZoom = ({ foto, aoFechar }) => {
                             <Imagem
                                 foto={foto}
                                 expandida={true}
+                                aoAlternarFavorito={aoAlternarFavorito}
                             />
                             <FormEstilizado method="dialog">
                                 <BotaoEstilizado formMethod="dialog" onClick={retirarOverlay}>X</BotaoEstilizado>
