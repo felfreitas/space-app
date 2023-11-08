@@ -20,7 +20,7 @@ const ImagensContainer = styled.section`
     gap: 24px;
 `
 
-const Galeria = ({ fotos = [], aoFotoSelecionada }) => {
+const Galeria = ({ fotos = [], aoFotoSelecionada, aoAlternarFavorito }) => {
     return (
 
         <>
@@ -37,6 +37,7 @@ const Galeria = ({ fotos = [], aoFotoSelecionada }) => {
                                 <Imagem
                                     aoZoomSolicitado ={aoFotoSelecionada}
                                     key={foto.id}
+                                    aoAlternarFavorito ={aoAlternarFavorito}
                                     foto={foto}
                                 />
 

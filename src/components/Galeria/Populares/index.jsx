@@ -28,7 +28,6 @@ const ColunaFotos = styled.div`
 
 
 const Populares = () => {
-    console.log(fotos);
     return (<>
 
         <section>

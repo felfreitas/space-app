@@ -99,7 +99,7 @@ const BotaoIcone = styled.button`
 //     justify-content: space-between;
 //     align-items: center;
 // `
-const Imagem = ({ foto, expandida = false, aoZoomSolicitado }) => {
+const Imagem = ({ foto, expandida = false, aoZoomSolicitado , aoAlternarFavorito}) => {
 
     return (
         <>
@@ -113,7 +113,7 @@ const Imagem = ({ foto, expandida = false, aoZoomSolicitado }) => {
                     <FooterEstilizado>
                         <FonteFoto>{foto.fonte}</FonteFoto>
                         <BotoesAgrupados>
-                            <BotaoIcone> <img src="/icones/favorito.png" alt="Icone de favorito" /></BotaoIcone>
+                            <BotaoIcone onClick={()=>aoAlternarFavorito(foto)}> <img src="/icones/favorito.png" alt="Icone de favorito" /></BotaoIcone>
                             {!expandida &&
                                 <BotaoIcone
                                     aria-hidden={expandida}

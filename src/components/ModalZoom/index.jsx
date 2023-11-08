@@ -16,6 +16,7 @@ const DialogEstilizado = styled.dialog`
     top:294px;
     padding:0;
     border:0;
+    background:transparent;
     `
 const AgrupandoDentroDialogo = styled.div`
     display:flex;
@@ -35,19 +36,19 @@ const BotaoEstilizado = styled.button`
     border: none;
     cursor: pointer;
 `
-const ModalZoom = ({ foto }) => {
+const ModalZoom = ({ foto, aoFechar }) => {
 
     const [show, setShow] = useState(false);
 
     function retirarOverlay() {
-        setShow(!show)
+        setShow(false)
     }
     return (
         <>
             {foto &&
                 <>
                     <Overlay hidden={show} />
-                    <DialogEstilizado open={true}>
+                    <DialogEstilizado open={!!foto} onClose={aoFechar}>
                         <AgrupandoDentroDialogo>
 
                             <Imagem
@@ -55,7 +56,7 @@ const ModalZoom = ({ foto }) => {
                                 expandida={true}
                             />
                             <FormEstilizado method="dialog">
-                                <BotaoEstilizado onClick={retirarOverlay}>X</BotaoEstilizado>
+                                <BotaoEstilizado formMethod="dialog" onClick={retirarOverlay}>X</BotaoEstilizado>
                             </FormEstilizado>
                         </AgrupandoDentroDialogo>
                     </DialogEstilizado>
