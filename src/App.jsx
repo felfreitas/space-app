@@ -8,6 +8,7 @@ import Galeria from "./components/Galeria";
 import fotos from "./fotos.json";
 import { useEffect, useState } from "react";
 import ModalZoom from "./components/ModalZoom";
+import Rodape from "./components/Rodape";
 
 
 const FundoGradiente = styled.div`
@@ -62,9 +63,9 @@ const App = () => {
   useEffect(() => {
     const fotosFiltradas = fotos.filter(ft => {
 
-      const fotoFiltradaPorTag =  !tagSelecionada || ft.tagId === tagSelecionada;
+      const fotoFiltradaPorTag = !tagSelecionada || ft.tagId === tagSelecionada;
       const fotoFiltradaPorTexto = !textoDigitado || ft.titulo.toLowerCase().includes(textoDigitado.toLowerCase());
-      
+
       return fotoFiltradaPorTag && fotoFiltradaPorTexto;
     });
     setFotosDaGaleria(fotosFiltradas)
@@ -79,7 +80,7 @@ const App = () => {
       <EstilosGlobais />
       <AppContainer>
 
-        <Cabecalho textoDigitado={textoDigitado} setTextoDigitado={setTextoDigitado}/>
+        <Cabecalho textoDigitado={textoDigitado} setTextoDigitado={setTextoDigitado} />
         <MainContainer>
 
           <BarraLateral />
@@ -99,6 +100,7 @@ const App = () => {
           </ConteudoGaleria>
         </MainContainer>
       </AppContainer>
+      <Rodape />
 
       <ModalZoom foto={fotoSelecionada}
         aoFechar={() => setFotoSelecionada(null)}

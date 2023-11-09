@@ -1,0 +1,17 @@
+[
+    {
+      "nome": "Facebook",
+      "path": "/imagens/sociais/facebook.svg",
+      "id": "1"
+    },
+    {
+      "nome": "Instagram",
+      "path": "/imagens/sociais/instagram.svg",
+      "id": "2"
+    },
+    {
+      "nome": "Twitter",
+      "path": "/imagens/sociais/twitter.svg",
+      "id": "3"
+    }
+  ]
