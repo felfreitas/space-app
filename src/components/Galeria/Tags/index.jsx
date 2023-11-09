@@ -41,7 +41,7 @@ const DivBotao = styled.div`
     margin-left:24px;
 `
 
-const Tags = () => {
+const Tags = ({setTagSelecionada}) => {
 
     return (
         <TesteFlex>
@@ -51,7 +51,7 @@ const Tags = () => {
 
         <DivBotao>
 
-            {tags.map(tag => <BotaoEstilizado key={tag.id}>{tag.titulo}</BotaoEstilizado>)
+            {tags.map(tag => <BotaoEstilizado key={tag.id} onClick={()=>setTagSelecionada(tag.id)}>{tag.titulo}</BotaoEstilizado>)
             }
             </DivBotao>
         </TesteFlex>

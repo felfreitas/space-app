@@ -6,7 +6,7 @@ import Banner from "./components/Banner";
 import bannerImagem from './assets/banner.png'
 import Galeria from "./components/Galeria";
 import fotos from "./fotos.json";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ModalZoom from "./components/ModalZoom";
 
 
@@ -37,10 +37,14 @@ const App = () => {
 
   const [fotosDaGaleria, setFotosDaGaleria] = useState(fotos);
   const [fotoSelecionada, setFotoSelecionada] = useState(null);
+  const [tagSelecionada, setTagSelecionada] = useState(0);
+  const [textoDigitado, setTextoDigitado] = useState('');
 
-  const aoAlternarFavorito = (foto)=>{
-    setFotosDaGaleria(fotosDaGaleria.map(fotosDaGaleria =>{
-      if(foto.id === fotoSelecionada?.id){
+
+
+  const aoAlternarFavorito = (foto) => {
+    setFotosDaGaleria(fotosDaGaleria.map(fotosDaGaleria => {
+      if (foto.id === fotoSelecionada?.id) {
         setFotoSelecionada({
           ...fotoSelecionada,
           favorita: !fotoSelecionada.favorita
@@ -53,12 +57,29 @@ const App = () => {
     }))
   }
 
+
+
+  useEffect(() => {
+    const fotosFiltradas = fotos.filter(ft => {
+
+      const fotoFiltradaPorTag =  !tagSelecionada || ft.tagId === tagSelecionada;
+      const fotoFiltradaPorTexto = !textoDigitado || ft.titulo.toLowerCase().includes(textoDigitado.toLowerCase());
+      
+      return fotoFiltradaPorTag && fotoFiltradaPorTexto;
+    });
+    setFotosDaGaleria(fotosFiltradas)
+
+
+
+  }, [tagSelecionada, textoDigitado])
+
+
   return (
     <FundoGradiente>
       <EstilosGlobais />
       <AppContainer>
 
-        <Cabecalho />
+        <Cabecalho textoDigitado={textoDigitado} setTextoDigitado={setTextoDigitado}/>
         <MainContainer>
 
           <BarraLateral />
@@ -71,6 +92,7 @@ const App = () => {
             <Galeria
               aoFotoSelecionada={foto => setFotoSelecionada(foto)}
               aoAlternarFavorito={aoAlternarFavorito}
+              setTagSelecionada={setTagSelecionada}
               fotos={fotosDaGaleria}
             />
 
@@ -78,9 +100,10 @@ const App = () => {
         </MainContainer>
       </AppContainer>
 
-      <ModalZoom foto={fotoSelecionada} aoFechar={()=> setFotoSelecionada(null)} aoAlternarFavorito={aoAlternarFavorito}/>
+      <ModalZoom foto={fotoSelecionada}
+        aoFechar={() => setFotoSelecionada(null)}
+        aoAlternarFavorito={aoAlternarFavorito} />
 
-      
     </FundoGradiente>
   )
 }
